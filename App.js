@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
+import Avatar from './components/Avatar';
+
+export default class App extends Component {
   render() {
-    return <Avatar initials="FL" size={35} backgroundColor={'blue'}/>;
+    return (
+      <View style={styles.container}>
+        <Avatar initials={"FL"} size={35} backgroundColor={'teal'}/>
+      </View>
+    )
   }
 }
 
@@ -11,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
   },
 });
