@@ -7,7 +7,18 @@ import getAvatarColor from '../utils/getAvatarColor';
 import getInitials from '../utils/getInitials';
 
 export default function AuthorRow({ fullname, linkText, onPressLink }) {
-
+  return (
+    <View style={styles.container}>
+      <Avatar
+        size={35}
+        initials={getInitials(fullname)}
+        backgroundColor={getAvatarColor(fullname)}
+      />
+      <Text style={styles.text} numberOfLines={1}>
+        {fullname}
+      </Text>
+    </View>
+  )
 }
 
 const styles = StylesSheet.create({
