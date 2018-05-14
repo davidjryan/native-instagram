@@ -17,14 +17,23 @@ export default class Card extends Component {
     onPressLinkText: () => {},
   };
 
-  render() {
-    const { fullname, image, linktext, onPressLinkText } = this.props;
+  state = {
+    loading: true,
+  };
 
+  handleLoad = () => {
+    this.setState({ loading: false });
+  }
+
+  render() {
+    const { fullname, image, linkText, onPressLinkText } = this.props;
+    const { loading } = this.state;
+    
     return (
       <View>
         <AuthorRow
           fullname={fullname}
-          linktext={linktext}
+          linkText={linkText}
           onPressLinkText={onPressLinkText}
         />
         <Image style={styles.image} source={image} />
