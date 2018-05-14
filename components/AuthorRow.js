@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import getAvatarColor from '../utils/getAvatarColor'; 
 import getInitials from '../utils/getInitials';
 
-export default function AuthorRow({ fullname, linkText, onPressLink }) {
+export default function AuthorRow({ fullname, linkText, onPressLinkText }) {
   return (
     <View style={styles.container}>
       <Avatar
@@ -17,11 +17,16 @@ export default function AuthorRow({ fullname, linkText, onPressLink }) {
       <Text style={styles.text} numberOfLines={1}>
         {fullname}
       </Text>
+      {!!linkText && (
+        <TouchableOpacity onPress={onPressLinkText}>
+          <Text numberOfLines={1}>{linkText}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   )
 }
 
-const styles = StylesSheet.create({
+const styles = StyleSheet.create({
   container: {
     height: 50,
     flexDirection: 'row',
