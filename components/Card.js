@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -36,7 +36,12 @@ export default class Card extends Component {
           linkText={linkText}
           onPressLinkText={onPressLinkText}
         />
-        <Image style={styles.image} source={image} onLoad={this.handleLoad}/>
+        <View style={styles.image}>
+          {loading && (
+            <ActivityIndicator style={StyleSheet.absoluteFill} size={'large'} />
+          )}
+          <Image style={styles.image} source={image} onLoad={this.handleLoad}/>
+        </View>
       </View>
     )
   }
