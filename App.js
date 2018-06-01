@@ -4,17 +4,19 @@ import { Constants } from 'expo';
 
 import Avatar from './components/Avatar';
 import AuthorRow from './components/AuthorRow';
+import Card from './components/Card';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AuthorRow
+        <Card
           fullname={'First Last'}
           linkText={'Comments'}
           onPressLinkText={() => {
             console.log('Pressed Link');
           }}
+          image={{ uri: 'https://unsplash.it/600/600' }}
         />
       </View>
     )
