@@ -2,7 +2,7 @@ import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { getImageFRomId } from '../utils/api';
+import { getImageFromId } from '../utils/api';
 import Card from './Card';
 
 const keyExtractor = ({ id }) => id;
