@@ -18,4 +18,45 @@ export default class Feed extends Component {
   static defaultProps = {
     style: null,
   };
+
+  state = {
+    loading: true,
+    error: false,
+    items: [],
+  };
+
+  async componentDidMount() {
+    try {
+      const items = await fetchImages();
+
+      this.setState({
+        loading: false,
+        items,
+      });
+    } catch (e) {
+      this.setState({
+        loading: false,
+        error: true,
+      });
+    }
+  }
+
+  render() {
+    const { style } = this.props;
+    const { laoding, error, items } = this.state;
+
+    if (loading) {
+      return <ActivityIndicator size="large" />;
+    }
+
+    if (error) {
+      return <Text>Error...</Text>;
+    }
+
+    return (
+      <SafeAreaView style={style}>
+        <CardList items={items} />
+      </SafeAreaView>
+    );
+  }
 }
