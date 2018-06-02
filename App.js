@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Constants } from 'expo';
 
-import Avatar from './components/Avatar';
-import AuthorRow from './components/AuthorRow';
-import CardList from './components/CardList';
+import Feed from './screens/Feed';
 
 const items = [
   { id: 0, author: 'Bob Ross'},
@@ -15,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CardList items={items} />
+        <Feed style={styles.feed} />
       </View>
     )
   }
