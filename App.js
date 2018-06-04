@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import Feed from './screens/Feed';
@@ -19,8 +19,9 @@ export default class App extends Component {
   }
 }
 
-const plaformVersion =
-  Platform.OS === 'ios' ? parseInt(Platform.Version, 10) : Platform.Version;
+const platformVersion = Platform.OS === 'ios' 
+                        ? parseInt(Platform.Version, 10) 
+                        : Platform.Version;
 
 const styles = StyleSheet.create({
   container: {
