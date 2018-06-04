@@ -10,6 +10,26 @@ const items = [
 ]
 
 export default class App extends Component {
+  state = {
+    commentsForItems: {},
+    showModal: false,
+    selectedItemId: null,
+  };
+
+  openCommentsScreen = id => {
+    this.setState({
+      showModal: true,
+      selectedItemId: id,
+    });
+  };
+
+  closeCommentScreen = () => {
+    this.setState({
+      showModal: false,
+      selectedItemId: null,
+    });
+  };
+  
   render() {
     return (
       <View style={styles.container}>
