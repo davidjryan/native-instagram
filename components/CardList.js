@@ -11,20 +11,29 @@ export default class CardList extends Component {
   static propTypes = { 
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isREquired,
-        author: PropTypes.stringisREquired,
+        id: PropTypes.number.isRequired,
+        author: PropTypes.stringisRequired,
       }),
     ).isRequired,
+    commentsForItem: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+    onPressComments: PropTypes.func.isRequired,
   };
 
-  renderItem = ({ item: { id, author } }) => (
-    <Card
-      fullname={author}
-      image={{
-        uri: getImageFromId(id),
-      }}
-    />
-  );
+  renderItem = ({ item: { id, author } }) => {
+    const { commentsFormItem, onPressComments } = this.props;
+    const comments = commentsForItem[id];
+    
+    return (
+      <Card
+        fullname={author}
+        image={{
+          uri: getImageFromId(id),
+        }}
+        linkText={`${comments ? comments.length : 0} Comments`}
+        onPressLinkText={() => onPressComments(id)}
+      />
+    );
+  };
 
   render() {
     const { items } = this.props;
