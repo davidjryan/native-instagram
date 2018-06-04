@@ -5,10 +5,10 @@ import {
   SafeAreaView,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { Componenets } from 'react';
+import React, { Component } from 'react';
 
 import { fetchImages } from '../utils/api';
-import CardList from './components/CardList';
+import CardList from '../components/CardList';
 
 export default class Feed extends Component {
   static propTypes = {
@@ -43,7 +43,7 @@ export default class Feed extends Component {
 
   render() {
     const { style } = this.props;
-    const { laoding, error, items } = this.state;
+    const { loading, error, items } = this.state;
 
     if (loading) {
       return <ActivityIndicator size="large" />;
