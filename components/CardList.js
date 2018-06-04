@@ -20,7 +20,7 @@ export default class CardList extends Component {
   };
 
   renderItem = ({ item: { id, author } }) => {
-    const { commentsFormItem, onPressComments } = this.props;
+    const { commentsForItem, onPressComments } = this.props;
     const comments = commentsForItem[id];
     
     return (
@@ -36,13 +36,14 @@ export default class CardList extends Component {
   };
 
   render() {
-    const { items } = this.props;
+    const { items, commentsForItem } = this.props;
 
     return (
       <FlatList
         data={items}
         renderItem={this.renderItem}
         keyExtractor={keyExtractor}
+        extraData={commentsForItem}
       />
     );
   }
