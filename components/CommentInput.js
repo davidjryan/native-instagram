@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 export default class CommentInput extends Component {
   static propTypes = {
-    onSubmit: PropTyes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
   };
 
@@ -49,7 +49,7 @@ export default class CommentInput extends Component {
   }
 }
 
-const styles = ShyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: 'rgba(0,0,0,0.1)',
