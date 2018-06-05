@@ -13,7 +13,7 @@ import CardList from '../components/CardList';
 export default class Feed extends Component {
   static propTypes = {
     style: ViewPropTypes.style,
-    commentsForItem: PropTypes.objectOf(PorpTypes.arrayOf(PropTypes.string)).isRequired,
+    commentsForItem: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     onPressComments: PropTypes.func.isRequired,
   };
 
