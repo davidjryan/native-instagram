@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { Modal, StyleSheet, Text, View, Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import Feed from './screens/Feed';
+import Comments from './screens/Comments';
 
 const items = [
   { id: 0, author: 'Bob Ross'},
@@ -31,9 +32,26 @@ export default class App extends Component {
   };
   
   render() {
+    const { commentsForItem, showModal, selectedItemId } = this.state;
+
     return (
       <View style={styles.container}>
-        <Feed style={styles.feed} />
+        <Feed
+          style={styles.feed}
+          commentsForItem={commentsForItem}
+          onPressComments={this.openCommentScreen}
+        />
+        <Modal
+          visible={showModal}
+          animationType='slide'
+          onRequestClose={this.closeCommentScreen}
+        >
+          <Comments
+            style={styles.container}
+            comments={commentsForItem[selectedItemId] || []}
+            onClose={this.closeCommentScreen}
+          />
+        </Modal>
       </View>
     )
   }
@@ -51,8 +69,15 @@ const styles = StyleSheet.create({
   feed: {
     flex: 1,
     marginTop:
-    Platform.OS === 'android' || platformVersion < 11
-      ? Constants.statusBarHeight
-      : 0,
+      Platform.OS === 'android' || platformVersion < 11
+        ? Constants.statusBarHeight
+        : 0,
+  },
+  comments: {
+    flex: 1,
+    marginTop:
+      Platform.OS === 'ios' || platformVersion < 11
+        ? Constants.statusBarHeight
+        : 0,
   },
 });
