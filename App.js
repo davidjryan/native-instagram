@@ -12,7 +12,7 @@ const items = [
 
 export default class App extends Component {
   state = {
-    commentsForItems: {},
+    commentsForItem: {},
     showModal: false,
     selectedItemId: null,
   };
@@ -29,6 +29,18 @@ export default class App extends Component {
       showModal: false,
       selectedItemId: null,
     });
+  };
+
+  onSubmitComment = (text) => {
+    const { selectedItemId, commentsForItem } = this.state;
+    const comments = commentsForItem[selectedItemId] || [];
+
+    const updated = {
+      ...commentsForItem,
+      [selectedItemId]: [...comments, text],
+    };
+
+    this.setState({ commentsForItems: updated });
   };
   
   render() {
