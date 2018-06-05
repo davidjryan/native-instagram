@@ -17,7 +17,7 @@ export default class App extends Component {
     selectedItemId: null,
   };
 
-  openCommentsScreen = id => {
+  openCommentScreen = id => {
     this.setState({
       showModal: true,
       selectedItemId: id,
@@ -62,6 +62,7 @@ export default class App extends Component {
             style={styles.container}
             comments={commentsForItem[selectedItemId] || []}
             onClose={this.closeCommentScreen}
+            onSubmitComment={this.onSubmitComment}
           />
         </Modal>
       </View>
