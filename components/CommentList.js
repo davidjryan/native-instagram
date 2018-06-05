@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import uuidv4 from "uuid/v4";
 
 export default class CommentList extends Component {
   static propTypes = {
@@ -8,7 +9,7 @@ export default class CommentList extends Component {
   };
 
   renderItem = (item, index) => {
-    <View key={index} style={styles.coment}>
+    <View key={uuidv4()} style={styles.comment}>
       <Text>{item}</Text>
     </View>
   };
