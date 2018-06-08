@@ -9,7 +9,7 @@ export default class CommentList extends Component {
   };
 
   renderItem = (item, index) => {
-    <View key={uuidv4()} style={styles.comment}>
+    <View key={index} style={styles.comment}>
       <Text>{item}</Text>
     </View>
   };

@@ -40,7 +40,7 @@ export default class CommentInput extends Component {
           style={styles.input}
           value={text}
           placeholder={placeholder}
-          underlineColorAndroid= "transparent"
+          underlineColorAndroid="transparent"
           onChangeText={this.handleChangeText}
           onSubmitEditing={this.handleSubmitEditing}
         />

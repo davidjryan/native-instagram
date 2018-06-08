@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, StyleSheet, Text, View, Platform } from 'react-native';
+import { Modal, StyleSheet, View, Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import Feed from './screens/Feed';
 import Comments from './screens/Comments';
-
-const items = [
-  { id: 0, author: 'Bob Ross'},
-  { id: 1, author: 'Chuck Norris'},
-]
 
 export default class App extends Component {
   state = {
@@ -31,7 +26,7 @@ export default class App extends Component {
     });
   };
 
-  onSubmitComment = (text) => {
+  onSubmitComment = text => {
     const { selectedItemId, commentsForItem } = this.state;
     const comments = commentsForItem[selectedItemId] || [];
 
@@ -40,7 +35,7 @@ export default class App extends Component {
       [selectedItemId]: [...comments, text],
     };
 
-    this.setState({ commentsForItems: updated });
+    this.setState({ commentsForItem: updated });
   };
   
   render() {
@@ -59,7 +54,7 @@ export default class App extends Component {
           onRequestClose={this.closeCommentScreen}
         >
           <Comments
-            style={styles.container}
+            style={styles.comments}
             comments={commentsForItem[selectedItemId] || []}
             onClose={this.closeCommentScreen}
             onSubmitComment={this.onSubmitComment}
@@ -75,22 +70,22 @@ const platformVersion = Platform.OS === 'ios'
                         : Platform.Version;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  feed: {
-    flex: 1,
-    marginTop:
-      Platform.OS === 'android' || platformVersion < 11
-        ? Constants.statusBarHeight
-        : 0,
-  },
-  comments: {
-    flex: 1,
-    marginTop:
-      Platform.OS === 'ios' || platformVersion < 11
-        ? Constants.statusBarHeight
-        : 0,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+	},
+	feed: {
+		flex: 1,
+		marginTop:
+			Platform.OS === "android" || platformVersion < 11
+				? Constants.statusBarHeight
+				: 0,
+	},
+	comments: {
+		flex: 1,
+		marginTop:
+			Platform.OS === "ios" && platformVersion < 11
+				? Constants.statusBarHeight
+				: 0,
+	},
 });
